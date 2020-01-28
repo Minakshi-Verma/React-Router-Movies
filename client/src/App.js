@@ -24,8 +24,8 @@ const App = () => {
       </Route>
 
       {/* <Route path="/MovieList/movieID"  component={Movie}/> */}
-      <Route path = "/movies/:movieID">
-        <Movie />
+      <Route path = "/movie/:id">
+        <Movie add = {addToSavedList}/>
       </Route>
         
       

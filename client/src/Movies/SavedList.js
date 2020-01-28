@@ -1,7 +1,13 @@
 import React from 'react';
-import {Link}from 'react-router-dom';
+// import {Link}from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
-const SavedList = props => (
+const SavedList = props => {
+  let history = useHistory();
+
+
+
+return(
   <div className="saved-list">
     <h3>Saved Movies:</h3>
     
@@ -9,11 +15,12 @@ const SavedList = props => (
       <span className="saved-movie">{movie.title}</span>
     ))}
     {/* add functionality to home button to go back to Home */}
-    <div className="home-button">   
-      <Link to = "/" >Home</Link>
+    <div onClick = {history.goBack} className="home-button"> 
+    Home  
+      {/* <Link to = "/" >Home</Link> */}
     </div>
     {/* <div className="home-button">Home</div> */}
   </div>
-);
-
+ );
+};
 export default SavedList;

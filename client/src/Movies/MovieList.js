@@ -36,10 +36,12 @@ const MovieList = props => {
 
 function MovieDetails({ movie }) {
 
-  const { title, director, metascore, stars } = movie;
+  const { title, director, metascore, stars, id } = movie;
   return (
+    // <Link to = "/movie/movieID" ></Link>
+    <Link to = {`/movie/${id}`}>
     <div className="movie-card">
-      <Link to = "/movies/movieID" >
+      
 
       <h2>{title}</h2>
       <div className="movie-director">
@@ -55,9 +57,9 @@ function MovieDetails({ movie }) {
           {star}          
         </div>
       ))}
-
-      </Link>
+    
     </div>
+     </Link>
   );
 }
 
