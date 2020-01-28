@@ -1,11 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom"; //import useParams
 import axios from 'axios';
 
+
+
+
 const Movie = (props) => {
+console.log("I am the props from movie", props)
+
+  const {movieID} = useParams()   //useParams
+  
+  const id = {movieID}
+  props.movie.find(movie => movieID ===`${movie.id}` 
+  );
+  // const {url} = useRouteMatch()
+
   const [movie, setMovie] = useState();
- 
+  
+
   useEffect(() => {
-    const id = 1;
+   
+    
+    const id = {movieID};//
     // change ^^^ that line and grab the id from the URL
     // You will NEED to add a dependency array to this effect hook
 
@@ -13,12 +29,15 @@ const Movie = (props) => {
         .get(`http://localhost:5000/api/movies/${id}`)
         .then(response => {
           setMovie(response.data);
+          console.log("I am the axios call from movie", response.data ) //
+         
+                  
         })
         .catch(error => {
           console.error(error);
         });
 
-  },[]);
+  },[movieID]);
   
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = () => {
