@@ -7,22 +7,27 @@ import axios from 'axios';
 
 const Movie = (props) => {
 console.log("I am the props from movie", props)
- const [movie, setMovie] = useState(null);
+ const [movie, setMovie] = useState();
   let { id } = useParams()   //useParams
-  
-    // props.movie.find(movie => movieID ===`${movie.id}`
+  // let {movieID} = useParams() 
+  //OR let movieID = useParams()
+
+
+  //  const [movie, setMovie] = useState(null);
+  //  props.movie.find(movie => movieID ===`${movie.id}` //didn't work
   // );
   // const {url} = useRouteMatch() 
   
   useEffect(() => {
    
-    
     // const id = {movieID};//
     // change ^^^ that line and grab the id from the URL
     // You will NEED to add a dependency array to this effect hook
 
        axios
         .get(`http://localhost:5000/api/movies/${id}`)
+        // .get(`http://localhost:5000/api/movies/${movieID}`)
+        // .get(`http://localhost:5000/api/movies/${movieID.movieID}`) //if you use line 13
         .then(response => {
           setMovie(response.data);
           console.log("I am the axios call from movie", response.data ) //
@@ -33,7 +38,7 @@ console.log("I am the props from movie", props)
           console.error(error);
         });
 
-  },[id]);
+  },[id]);   //code works without dependency array!
   
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = () => {
